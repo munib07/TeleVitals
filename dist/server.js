@@ -11,7 +11,6 @@ const userRoutes_1 = __importDefault(require("./app/routes/userRoutes"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const ErrorHandler_1 = __importDefault(require("./app/middlewares/ErrorHandler"));
 const authRoutes_1 = __importDefault(require("./app/routes/authRoutes"));
-const path_1 = __importDefault(require("path"));
 // Create an Express application
 const app = (0, express_1.default)();
 // Enable CORS
@@ -30,20 +29,20 @@ app.get("/api", (req, res) => {
 });
 app.use("/api/user", userRoutes_1.default);
 app.use("/api/auth", authRoutes_1.default);
-app.use(express_1.default.static("./frontend/build"));
+/*app.use(express.static("./frontend/build"));
 app.get("*", (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, "frontend", "build", "index.html"));
-});
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+});*/
 // Error-handling middleware should be registered after all other middleware and routes
 app.use(ErrorHandler_1.default);
 const mongoUri = process.env.MONGODBURI || "";
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
 mongoose_1.default
     .connect(mongoUri)
     .then((res) => {
     console.log(`Connected to MongoDB ${res.connection.name}`);
-    app.listen(process.env.PORT, () => {
-        console.log(`Server is running on port ${process.env.PORT}`);
-    });
 })
     .catch((err) => {
     console.log(

@@ -32,22 +32,23 @@ app.get("/api", (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
-app.use(express.static("./frontend/build"));
+/*app.use(express.static("./frontend/build"));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-});
+});*/
 // Error-handling middleware should be registered after all other middleware and routes
 app.use(errorHandler);
 
 const mongoUri = process.env.MONGODBURI || "";
 
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
+
 mongoose
   .connect(mongoUri)
   .then((res) => {
     console.log(`Connected to MongoDB ${res.connection.name}`);
-    app.listen(process.env.PORT, () => {
-      console.log(`Server is running on port ${process.env.PORT}`);
-    });
   })
   .catch((err) => {
     console.log(
