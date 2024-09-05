@@ -6,6 +6,7 @@ import userRoutes from "./app/routes/userRoutes";
 import mongoose, { ConnectOptions } from "mongoose";
 import errorHandler from "./app/middlewares/ErrorHandler";
 import authRoutes from "./app/routes/authRoutes";
+import path from "path";
 
 // Create an Express application
 const app = express();
@@ -23,7 +24,7 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 
 // Define a route for the root path ('/')
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   // Send a response to the client
   res.send("Hello, TypeScript + Node.js + Express!");
 });
@@ -31,6 +32,10 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
+app.use(express.static("./frontend/build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+});
 // Error-handling middleware should be registered after all other middleware and routes
 app.use(errorHandler);
 
