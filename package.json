@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
-    "build": "tsc",
-    "dev": "npx nodemon -r dotenv/config src/server.ts",
+    "build": "tsc --project .",
+    "dev": "npx nodemon -r dotenv/config server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

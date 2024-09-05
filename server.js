@@ -8,6 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const userRoutes_1 = __importDefault(require("./src/app/routes/userRoutes"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const ErrorHandler_1 = __importDefault(require("./src/app/middlewares/ErrorHandler"));
 const authRoutes_1 = __importDefault(require("./src/app/routes/authRoutes"));
 // Create an Express application
@@ -38,16 +39,13 @@ const mongoUri = process.env.MONGODBURI || "";
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
-/*
-mongoose
-  .connect(mongoUri)
-  .then((res) => {
+mongoose_1.default
+    .connect(mongoUri)
+    .then((res) => {
     console.log(`Connected to MongoDB ${res.connection.name}`);
-  })
-  .catch((err) => {
+})
+    .catch((err) => {
     console.log(
-      // eslint-disable-next-line comma-dangle
-      `Initial Distribution API Database connection error occurred - ${err}`
-    );
-  });
-  */
+    // eslint-disable-next-line comma-dangle
+    `Initial Distribution API Database connection error occurred - ${err}`);
+});

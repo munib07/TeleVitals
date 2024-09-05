@@ -2,10 +2,10 @@
 import bodyParser from "body-parser";
 import express from "express";
 import cors from "cors";
-import userRoutes from "./app/routes/userRoutes";
+import userRoutes from "./src/app/routes/userRoutes";
 import mongoose, { ConnectOptions } from "mongoose";
-import errorHandler from "./app/middlewares/ErrorHandler";
-import authRoutes from "./app/routes/authRoutes";
+import errorHandler from "./src/app/middlewares/ErrorHandler";
+import authRoutes from "./src/app/routes/authRoutes";
 import path from "path";
 
 // Create an Express application
@@ -45,6 +45,7 @@ app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
 
+/*
 mongoose
   .connect(mongoUri)
   .then((res) => {
@@ -56,3 +57,4 @@ mongoose
       `Initial Distribution API Database connection error occurred - ${err}`
     );
   });
+  */
