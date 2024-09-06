@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc --project .",
     "dev": "npx nodemon -r dotenv/config server.ts",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
   "author": "",
