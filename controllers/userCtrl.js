@@ -4,8 +4,12 @@ const jwt = require("jsonwebtoken");
 const doctorModel = require("../models/doctorModel");
 const appointmentModel = require("../models/appointmentModel");
 const moment = require("moment");
+const logger = require("../libs/logger");
+
+
 //register callback
 const registerController = async (req, res) => {
+  logger.info("In Register Controller");
   try {
     const exisitingUser = await userModel.findOne({ email: req.body.email });
     if (exisitingUser) {
@@ -19,9 +23,13 @@ const registerController = async (req, res) => {
     req.body.password = hashedPassword;
     const newUser = new userModel(req.body);
     await newUser.save();
+    if (newUser.isDoctor) {
+      const newDoctor = new doctorModel({ userId: newUser._id, firstName: newUser.name, email: newUser.email, specialization: "General-Physician" });
+      await newDoctor.save();
+    }
     res.status(201).send({ message: "Register Sucessfully", success: true });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: `Register Controller ${error.message}`,
@@ -45,11 +53,20 @@ const loginController = async (req, res) => {
         .send({ message: "Invlid EMail or Password", success: false });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "5m",
     });
-    res.status(200).send({ message: "Login Success", success: true, token });
+    const refresh_token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "5m",
+    });
+    res
+      .cookie("refreshToken", refresh_token, {
+        httpOnly: true,
+        sameSite: "strict",
+      })
+      .header("Authorization", token);
+    res.status(200).send({ message: "Login Success", success: true });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
   }
 };
@@ -70,7 +87,7 @@ const authController = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       message: "auth error",
       success: false,
@@ -101,7 +118,7 @@ const applyDoctorController = async (req, res) => {
       message: "Doctor Account Applied SUccessfully",
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -126,7 +143,7 @@ const getAllNotificationController = async (req, res) => {
       data: updatedUser,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       message: "Error in notification",
       success: false,
@@ -149,7 +166,7 @@ const deleteAllNotificationController = async (req, res) => {
       data: updatedUser,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: "unable to delete all notifications",
@@ -168,7 +185,7 @@ const getAllDocotrsController = async (req, res) => {
       data: doctors,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -197,7 +214,7 @@ const bookeAppointmnetController = async (req, res) => {
       message: "Appointment Book succesfully",
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -235,7 +252,7 @@ const bookingAvailabilityController = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -255,7 +272,7 @@ const userAppointmentsController = async (req, res) => {
       data: appointments,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,

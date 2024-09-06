@@ -1,6 +1,8 @@
 const appointmentModel = require("../models/appointmentModel");
 const doctorModel = require("../models/doctorModel");
 const userModel = require("../models/userModels");
+const logger = require("../libs/logger");
+
 const getDoctorInfoController = async (req, res) => {
   try {
     const doctor = await doctorModel.findOne({ userId: req.body.userId });
@@ -10,7 +12,7 @@ const getDoctorInfoController = async (req, res) => {
       data: doctor,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -32,7 +34,7 @@ const updateProfileController = async (req, res) => {
       data: doctor,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: "Doctor Profile Update issue",
@@ -42,20 +44,20 @@ const updateProfileController = async (req, res) => {
 };
 
 //get single docotor
-const getDoctorByIdController = async (req, res) => {
+const getDoctorByNameController = async (req, res) => {
   try {
-    const doctor = await doctorModel.findOne({ _id: req.body.doctorId });
+    const doctor = await doctorModel.findOne({ firstName: req.body.doctorName });
     res.status(200).send({
       success: true,
-      message: "Sigle Doc Info Fetched",
+      message: "Single Doc Info Fetched",
       data: doctor,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Erro in Single docot info",
+      message: "Error in Single doctor info",
     });
   }
 };
@@ -72,7 +74,7 @@ const doctorAppointmentsController = async (req, res) => {
       data: appointments,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -101,7 +103,7 @@ const updateStatusController = async (req, res) => {
       message: "Appointment Status Updated",
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       error,
@@ -113,7 +115,7 @@ const updateStatusController = async (req, res) => {
 module.exports = {
   getDoctorInfoController,
   updateProfileController,
-  getDoctorByIdController,
+  getDoctorByNameController,
   doctorAppointmentsController,
   updateStatusController,
 };

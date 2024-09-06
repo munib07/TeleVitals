@@ -6,7 +6,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('https://webtelevitals-cbdgdnarf0g2cgdy.centralindia-01.azurewebsites.net/api');
+    axios.get('https://webtelevitals-cbdgdnarf0g2cgdy.centralindia-01.azurewebsites.net/api')
       .then(response => {
         setMessage(response.data.message);
       })

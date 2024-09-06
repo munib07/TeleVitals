@@ -11,11 +11,10 @@ const doctorSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-      required: [true, "last name is required"],
     },
     phone: {
       type: String,
-      required: [true, "phone no is required"],
+      //required: [true, "phone no is required"],
     },
     email: {
       type: String,
@@ -26,7 +25,7 @@ const doctorSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: [true, "address is required"],
+      //required: [true, "address is required"],
     },
     specialization: {
       type: String,
@@ -34,11 +33,11 @@ const doctorSchema = new mongoose.Schema(
     },
     experience: {
       type: String,
-      required: [true, "experience is required"],
+      //required: [true, "experience is required"],
     },
     feesPerCunsaltation: {
       type: Number,
-      required: [true, "fee is required"],
+      //required: [true, "fee is required"],
     },
     status: {
       type: String,
@@ -46,7 +45,7 @@ const doctorSchema = new mongoose.Schema(
     },
     timings: {
       type: Object,
-      required: [true, "wrok timing is required"],
+      //required: [true, "wrok timing is required"],
     },
   },
   { timestamps: true }

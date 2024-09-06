@@ -1,5 +1,6 @@
 const doctorModel = require("../models/doctorModel");
 const userModel = require("../models/userModels");
+const logger = require("../libs/logger");
 
 const getAllUsersController = async (req, res) => {
   try {
@@ -10,7 +11,7 @@ const getAllUsersController = async (req, res) => {
       data: users,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: "erorr while fetching users",
@@ -28,7 +29,7 @@ const getAllDoctorsController = async (req, res) => {
       data: doctors,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: "error while getting doctors data",
@@ -57,7 +58,7 @@ const changeAccountStatusController = async (req, res) => {
       data: doctor,
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(500).send({
       success: false,
       message: "Eror in Account Status",
