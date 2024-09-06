@@ -41,7 +41,7 @@ app.use(errorHandler);
 
 const mongoUri = process.env.MONGODBURI || "";
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 1137;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
