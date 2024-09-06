@@ -46,7 +46,7 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-/*
+
 mongoose
   .connect(mongoUri)
   .then((res) => {
@@ -58,4 +58,4 @@ mongoose
       `Initial Distribution API Database connection error occurred - ${err}`
     );
   });
-  */
+  
