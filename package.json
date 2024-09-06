@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc --project .",
-    "dev": "npx nodemon -r dotenv/config server.ts",
-    "test": "echo \"No test specified\" && exit 0"
+    "dev": "npx nodemon -r dotenv/config server.ts"
   },
   "keywords": [],
   "author": "",
