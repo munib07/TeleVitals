@@ -28,7 +28,7 @@ const options = {
                 description: 'Development server',
             },
             {
-                url: 'https://webtelevitals-cbdgdnarf0g2cgdy.centralindia-01.azurewebsites.net',
+                url: 'https://https://televitals.onrender.com/',
                 description: 'Production server',
             }
         ]

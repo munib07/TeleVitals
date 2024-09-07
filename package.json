@@ -24,8 +24,7 @@
     "moment": "^2.29.3",
     "mongoose": "^6.7.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20",
-    "vercel": "^37.4.0"
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "@azure/identity": "^4.4.1",
