@@ -15,10 +15,12 @@ Instructions on how to set up the project locally.
 Clone -> Use node 20 -> npm install -> move env.sample to .env  and update as per your local env-> npm run start
 
 # Clone the repository
-git clone https://github.com/munib07/TeleVitals.git
+git clone https://github.com/munib07/TeleVitals.git, Or
+git clone https://github.com/pesto-students/backend-repo-tele-vitals.git
 
 # Navigate to the project directory
-cd Televitals
+cd Televitals, Or
+cd backend-repo-tele-vitals
 
 # Install dependencies
 npm install
