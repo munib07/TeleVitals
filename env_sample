@@ -1,3 +1,0 @@
-PORT=3001
-JWT_SECRET="<add ur jwt secret>"
-MONGODBURI="mongodb://<MongodbHost>:27017/televitals_db"
