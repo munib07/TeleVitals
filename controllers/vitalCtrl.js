@@ -93,9 +93,8 @@ const inferAIVitalsByEmail = async (req, res) => {
         } 
         const vitals = await vitalModel
             .find({ patientEmail: req.body.patientEmail })
-            .select("heartBeat spo2 sugarLevel bloodPressure temperature timestamp");
-
-        //const prompt1 = 'Predict my health with given vitals'+JSON.stringify(vitals);
+            .select("heartBeat spo2 sugarLevel bloodPressure temperature");
+        logger.info(vitals);
         /*
         const messages = [
             { role: "system", content: "Translate the user prompt into pirate language"},
