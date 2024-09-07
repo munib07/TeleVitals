@@ -40,10 +40,12 @@ app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
 app.use("/api/v1/vital", require("./routes/vitalRoutes"));
 
 // Serve static assets if in production
+/*
 app.use(express.static("./frontend/build"));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
 });
+*/
 
 //port
 const port = process.env.PORT || 1137;
