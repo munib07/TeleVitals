@@ -33,3 +33,5 @@ next-env.d.ts
 
 #lock json
 package-lock.json
+
+.vercel

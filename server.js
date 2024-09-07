@@ -9,7 +9,7 @@ const { specs, swaggerUi } = require("./libs/swagger.js");
 dotenv.config();
 
 //mongodb connection
-//connectDB();
+connectDB();
 
 //rest object
 const app = express();
@@ -51,3 +51,5 @@ const port = process.env.PORT || 1137;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+module.exports = app;

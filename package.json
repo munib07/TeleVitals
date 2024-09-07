@@ -4,10 +4,8 @@
   "type": "commonjs",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "20.x"
-  },
   "scripts": {
+    "build": "echo 'build' ",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ./client ",
@@ -32,6 +30,8 @@
   "devDependencies": {
     "@azure/identity": "^4.4.1",
     "body-parser": "^1.20.2",
+    "openai": "^4.58.1",
+    "openai-api": "^1.3.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "winston": "^3.14.2"
