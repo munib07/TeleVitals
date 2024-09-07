@@ -9,7 +9,7 @@ const { specs, swaggerUi } = require("./libs/swagger.js");
 dotenv.config();
 
 //mongodb connection
-connectDB();
+//connectDB();
 
 //rest object
 const app = express();
