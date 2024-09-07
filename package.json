@@ -4,9 +4,11 @@
   "type": "commonjs",
   "description": "",
   "main": "server.js",
-  "moduleResolution": "Node",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "start": "nodemon -r dotenv/config  server.js",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ./client ",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -24,7 +26,8 @@
     "moment": "^2.29.3",
     "mongoose": "^6.7.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "vercel": "^37.4.0"
   },
   "devDependencies": {
     "@azure/identity": "^4.4.1",
