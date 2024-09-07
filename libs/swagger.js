@@ -28,7 +28,7 @@ const options = {
                 description: 'Development server',
             },
             {
-                url: 'https://https://televitals.onrender.com/',
+                url: 'https://televitals.onrender.com/',
                 description: 'Production server',
             }
         ]

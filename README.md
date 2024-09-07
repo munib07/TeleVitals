@@ -10,6 +10,9 @@ A brief description of what the project does and its purpose.
 - Doc and Patient/user segregation
 - Appointment Crud
 
+## Hosted on Render wuth cooked in swagger docs
+https://televitals.onrender.com/api-doc
+
 ## Installation
 Instructions on how to set up the project locally.
 Clone -> Use node 20 -> npm install -> move env.sample to .env  and update as per your local env-> npm run start
