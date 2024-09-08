@@ -7,11 +7,15 @@ A brief description of what the project does and its purpose.
 ## Features
 - Signup and Login using JWT
 - Vitals Crud
+- AI for predictive and preventive healthcase
 - Doc and Patient/user segregation
 - Appointment Crud
 
-## Hosted on Render wuth cooked in swagger docs
+## Hosted on Render with cooked in swagger docs on render
 https://televitals.onrender.com/api-doc
+
+# Cooked in swagger docs on local/dev mode
+http://localhost:3001/api-docs
 
 ## Installation
 Instructions on how to set up the project locally.
@@ -28,11 +32,8 @@ cd backend-repo-tele-vitals
 # Install dependencies
 npm install
 
-# Start the application in dev mode using nodemon
-npm start dev
-
-# Cooked in swagger docs
-http://localhost:3001/api-docs
+# Start the application
+npm run start
 
 # Health Check API
-http://localhost:3001/api/healthcheck
+http://localhost:3001/api/healthcheck on local/dev mode

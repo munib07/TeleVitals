@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  insertByEmailVitals, readByEmailVitals, inferAIVitalsByEmail
+  insertByEmailVitals, readByEmailVitals, inferAIVitalsByEmail, readByEmailVitalsAvg
 } = require("../controllers/vitalCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 const router = express.Router();
@@ -94,7 +94,10 @@ router.post("/readByEmail", authMiddleware, readByEmailVitals);
  *             type: object
  *             properties:
  *               patientEmail:
+
  *                 type: string
+ *                 default: "user2@user.com"
+ *                 example: "user2@user.com"
  *     responses:
  *       200:
  *         description: Vitals Infered
@@ -103,3 +106,28 @@ router.post("/readByEmail", authMiddleware, readByEmailVitals);
  */
 router.post("/inferAIVitalsByEmail", authMiddleware, inferAIVitalsByEmail);
 module.exports = router; 
+
+// Generate Swagger Docs
+/**
+ * @swagger
+ * /api/v1/vital/readByEmailAvg:
+ *   post:
+ *     tags: [Vital]
+ *     summary: Read Vitals by Email Avg
+ *     description: Read Vitals by Patient Email Avg
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               patientEmail:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Vitals Read
+ *       500:
+ *         description: Server Error
+ */
+router.post("/readByEmailAvg", authMiddleware, readByEmailVitalsAvg);

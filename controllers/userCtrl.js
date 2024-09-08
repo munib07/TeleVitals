@@ -53,10 +53,10 @@ const loginController = async (req, res) => {
         .send({ message: "Invlid EMail or Password", success: false });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "5m",
+      expiresIn: "30m",
     });
     const refresh_token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "5m",
+      expiresIn: "60m",
     });
     res
       .cookie("refreshToken", refresh_token, {
@@ -64,7 +64,7 @@ const loginController = async (req, res) => {
         sameSite: "strict",
       })
       .header("Authorization", token);
-    res.status(200).send({ message: "Login Success", success: true });
+    res.status(200).send({ message: "Login Success", token: token, success: true });
   } catch (error) {
     logger.error(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
